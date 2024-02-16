@@ -1,0 +1,7 @@
+service: () -> {
+    checkLicense: (record {serialNumber:text; courseId:text}) -> (variant {Ok:bool; Err:text}) query;
+    createCourse: (text) -> (variant {Ok:record {id:text; "principal":principal; licenses:vec record {expired:opt nat64; name:text; createdAt:nat64; isUsed:bool; licenseId:text; serialNumber:text}; name:text; createdAt:nat64}; Err:text});
+    createLicense: (record {expired:opt nat64; name:text; serialNumber:text; courseId:text}) -> (variant {Ok:record {expired:opt nat64; name:text; createdAt:nat64; isUsed:bool; licenseId:text; serialNumber:text}; Err:text});
+    getCourses: () -> (variant {Ok:vec record {id:text; "principal":principal; licenses:vec record {expired:opt nat64; name:text; createdAt:nat64; isUsed:bool; licenseId:text; serialNumber:text}; name:text; createdAt:nat64}; Err:text}) query;
+    redeemCourseLicense: (record {serialNumber:text; courseId:text}) -> (variant {Ok:record {expired:opt nat64; name:text; createdAt:nat64; isUsed:bool; licenseId:text; serialNumber:text}; Err:text});
+}
