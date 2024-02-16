@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "dfx_install": "DFX_VERSION=0.15.1 sh -ci \"$(curl -fsSL https://sdk.dfinity.org/install.sh)\"",
         "build": "cd src/frontend && VITE_CANISTER_ORIGIN=http://$(dfx canister id backend).localhost:8000 vite build",
         "pretest": "ts-node --transpile-only --ignore=false --skip-project test/pretest.ts",
         "test": "ts-node --transpile-only --ignore=false --skip-project test/test.ts",
